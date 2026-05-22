@@ -14,7 +14,7 @@ interface ResumePanelProps {
   json: string
   onJsonChange: (value: string) => void
   onJsonValidationChange: (isValid: boolean, message: string | null) => void
-  onResumeReset: () => void
+  onResumeRevert: () => void
   onResumeExport: () => void
   onResumeImport: (value: string) => void
   templateSource: string
@@ -22,7 +22,7 @@ interface ResumePanelProps {
   selectedTemplateId: string
   templateOptions: TemplateOption[]
   onTemplateSelect: (value: string) => void
-  onTemplateReset: () => void
+  onTemplateRevert: () => void
   onTemplateExport: () => void
   onTemplateImport: (value: string) => void
 }
@@ -43,10 +43,10 @@ export default function ResumePanel(props: ResumePanelProps) {
             selectedTemplateId={props.selectedTemplateId}
             templateOptions={props.templateOptions}
             onTemplateSelect={props.onTemplateSelect}
-            onResumeReset={props.onResumeReset}
+            onResumeRevert={props.onResumeRevert}
             onResumeExport={props.onResumeExport}
             onResumeImport={props.onResumeImport}
-            onTemplateReset={props.onTemplateReset}
+            onTemplateRevert={props.onTemplateRevert}
             onTemplateExport={props.onTemplateExport}
             onTemplateImport={props.onTemplateImport}
           />

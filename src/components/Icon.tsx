@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-type IconName = 'download'
+type IconName = 'download' | 'export' | 'import' | 'revert'
 
 interface IconProps {
   name: IconName
@@ -34,6 +34,26 @@ const iconPaths: Record<IconName, ReactNode> = {
         strokeLinejoin="round"
         strokeWidth="1.8"
       />
+    </>
+  ),
+  export: (
+    <>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="M7 10l5 5 5-5" />
+      <path d="M12 15V3" />
+    </>
+  ),
+  import: (
+    <>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="M17 8l-5-5-5 5" />
+      <path d="M12 3v12" />
+    </>
+  ),
+  revert: (
+    <>
+      <path d="M10 6 4 12l6 6" />
+      <path d="M5 12h8a5 5 0 1 1 0 10h-2" />
     </>
   ),
 }

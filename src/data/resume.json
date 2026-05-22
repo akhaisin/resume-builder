@@ -64,7 +64,7 @@
       "position": "Ship's Bending Unit and Senior Delivery Crew Member",
       "startDate": "2999-12",
       "location": "New New York",
-      "summary": "Core crew member supporting interplanetary delivery, field operations, onboard cooking, and ad hoc tactical solutions.",
+      "summary": "Core crew member supporting interplanetary delivery, field operations, onboard cooking, \nand ad hoc tactical solutions.",
       "highlights": [
         "Supported hundreds of off-world delivery missions across hostile, unstable, and bureaucratically impossible environments.",
         "Provided rapid mechanical solutions in the field, including forced entry, structural reshaping, and improvised fabrication.",
@@ -79,7 +79,7 @@
       "startDate": "2996-04",
       "endDate": "2997-11",
       "location": "Tijuana Assembly Division",
-      "summary": "Manufactured as a high-capacity bending robot for industrial and infrastructure applications.",
+      "summary": "Manufactured as a high-capacity bending robot for industrial \nand infrastructure applications.",
       "highlights": [
         "Performed repetitive and custom bending operations for girders, pipes, and structural components.",
         "Exceeded factory throughput targets before leaving to pursue a less supervised career path.",
@@ -91,7 +91,7 @@
       "position": "Founder, Operator, and Opportunist",
       "startDate": "2998-01",
       "location": "Mostly New New York",
-      "summary": "Launched and operated multiple short-lived but energetic ventures spanning salvage, security, entertainment, and premium vice products.",
+      "summary": "Launched and operated multiple short-lived but energetic ventures spanning salvage, security, \nentertainment, and premium vice products.",
       "short_exp": true,
       "highlights": [
         "Created revenue streams in fast-moving markets with minimal startup overhead and maximum improvisation.",
@@ -119,7 +119,7 @@
   ],
   "skills": [
     {
-      "name": "Mechanical Capabilities",
+      "name": "Capabilities",
       "keywords": [
         "Metal Bending",
         "Pipe Forming",

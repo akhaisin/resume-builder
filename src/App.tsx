@@ -73,7 +73,7 @@ export default function App() {
             setIsResumeJsonValid(isValid)
             setResumeValidationMessage(message)
           }}
-          onResumeReset={() => setResumeDraft(createDefaultResume())}
+          onResumeRevert={() => setResumeDraft(createDefaultResume())}
           onResumeExport={() => downloadTextFile('resume.json', resumeDraft, 'application/json')}
           onResumeImport={setResumeDraft}
           templateSource={templateSource}
@@ -81,7 +81,7 @@ export default function App() {
           selectedTemplateId={selectedTemplateId}
           templateOptions={templateOptions}
           onTemplateSelect={setSelectedTemplateId}
-          onTemplateReset={() => setTemplateSource(selectedTemplate.bundledSource)}
+          onTemplateRevert={() => setTemplateSource(selectedTemplate.bundledSource)}
           onTemplateExport={() => downloadTextFile(selectedTemplateId, templateSource, 'text/plain')}
           onTemplateImport={setTemplateSource}
         />

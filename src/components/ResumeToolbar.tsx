@@ -1,4 +1,5 @@
 import { useRef, type ChangeEvent } from 'react'
+import Icon from './Icon'
 import type { TemplateOption } from './ResumePanel'
 
 export type TopLevelTab = 'resume' | 'template'
@@ -12,10 +13,10 @@ interface ResumeToolbarProps {
   selectedTemplateId: string
   templateOptions: TemplateOption[]
   onTemplateSelect: (value: string) => void
-  onResumeReset: () => void
+  onResumeRevert: () => void
   onResumeExport: () => void
   onResumeImport: (value: string) => void
-  onTemplateReset: () => void
+  onTemplateRevert: () => void
   onTemplateExport: () => void
   onTemplateImport: (value: string) => void
 }
@@ -32,46 +33,68 @@ export default function ResumeToolbar(props: ResumeToolbarProps) {
   const isResumeActive = props.activeTab === 'resume'
   const isTemplateActive = props.activeTab === 'template'
 
+  function handleResumeModeSelect(value: ResumeMode) {
+    props.onActiveTabChange('resume')
+    props.onResumeModeChange(value)
+  }
+
   return (
     <div className="resumeToolbar">
       <section className={`toolbarSection ${isResumeActive ? 'toolbarSectionActive' : ''}`.trim()}>
-        <button
-          type="button"
-          className="toolbarTabButton"
-          onClick={() => props.onActiveTabChange('resume')}
-        >
-          Resume
-        </button>
-
         <div className="toolbarModeTabs">
           <button
             type="button"
-            className={props.resumeMode === 'json' ? 'toolbarModeButtonActive' : undefined}
-            disabled={!isResumeActive}
-            onClick={() => props.onResumeModeChange('json')}
+            className={[
+              'toolbarTabButton',
+              isResumeActive && props.resumeMode === 'json' ? 'toolbarModeButtonActive' : '',
+            ].join(' ').trim()}
+            onClick={() => handleResumeModeSelect('json')}
           >
             JSON
           </button>
           <button
             type="button"
-            className={props.resumeMode === 'form' ? 'toolbarModeButtonActive' : undefined}
-            disabled={!isResumeActive}
-            onClick={() => props.onResumeModeChange('form')}
+            className={[
+              'toolbarTabButton',
+              isResumeActive && props.resumeMode === 'form' ? 'toolbarModeButtonActive' : '',
+            ].join(' ').trim()}
+            onClick={() => handleResumeModeSelect('form')}
           >
             Forms
           </button>
         </div>
 
-        <div className="toolbarControls">
-          <button type="button" disabled={!isResumeActive} onClick={props.onResumeReset}>Reset</button>
+        <div className="toolbarControls toolbarControlsTemplate">
           <button
             type="button"
+            className="toolbarIconButton"
+            aria-label="Revert resume"
+            title="Revert resume"
+            disabled={!isResumeActive}
+            onClick={props.onResumeRevert}
+          >
+            <Icon name="revert" className="toolbarActionIcon" />
+          </button>
+          <button
+            type="button"
+            className="toolbarIconButton"
+            aria-label="Import resume"
+            title="Import resume"
             disabled={!isResumeActive}
             onClick={() => resumeImportRef.current?.click()}
           >
-            Import
+            <Icon name="import" className="toolbarActionIcon" />
           </button>
-          <button type="button" disabled={!isResumeActive} onClick={props.onResumeExport}>Export</button>
+          <button
+            type="button"
+            className="toolbarIconButton"
+            aria-label="Export resume"
+            title="Export resume"
+            disabled={!isResumeActive}
+            onClick={props.onResumeExport}
+          >
+            <Icon name="export" className="toolbarActionIcon" />
+          </button>
         </div>
 
         <input
@@ -88,16 +111,27 @@ export default function ResumeToolbar(props: ResumeToolbarProps) {
         />
       </section>
 
-      <section className={`toolbarSection ${isTemplateActive ? 'toolbarSectionActive' : ''}`.trim()}>
-        <button
-          type="button"
-          className="toolbarTabButton"
-          onClick={() => props.onActiveTabChange('template')}
-        >
-          Template
-        </button>
+      <section
+        className={[
+          'toolbarSection',
+          'toolbarSectionTemplate',
+          isTemplateActive ? 'toolbarSectionActive' : '',
+        ].join(' ').trim()}
+      >
+        <div className="toolbarModeTabs">
+          <button
+            type="button"
+            className={[
+              'toolbarTabButton',
+              isTemplateActive ? 'toolbarModeButtonActive' : '',
+            ].join(' ').trim()}
+            onClick={() => props.onActiveTabChange('template')}
+          >
+            Template
+          </button>
+        </div>
 
-        <div className="toolbarControls">
+        <div className="toolbarControls toolbarControlsTemplate">
           <select
             className="toolbarSelect"
             value={props.selectedTemplateId}
@@ -109,15 +143,36 @@ export default function ResumeToolbar(props: ResumeToolbarProps) {
               </option>
             ))}
           </select>
-          <button type="button" disabled={!isTemplateActive} onClick={props.onTemplateReset}>Reset</button>
           <button
             type="button"
+            className="toolbarIconButton"
+            aria-label="Revert template"
+            title="Revert template"
+            disabled={!isTemplateActive}
+            onClick={props.onTemplateRevert}
+          >
+            <Icon name="revert" className="toolbarActionIcon" />
+          </button>
+          <button
+            type="button"
+            className="toolbarIconButton"
+            aria-label="Import template"
+            title="Import template"
             disabled={!isTemplateActive}
             onClick={() => templateImportRef.current?.click()}
           >
-            Import
+            <Icon name="import" className="toolbarActionIcon" />
           </button>
-          <button type="button" disabled={!isTemplateActive} onClick={props.onTemplateExport}>Export</button>
+          <button
+            type="button"
+            className="toolbarIconButton"
+            aria-label="Export template"
+            title="Export template"
+            disabled={!isTemplateActive}
+            onClick={props.onTemplateExport}
+          >
+            <Icon name="export" className="toolbarActionIcon" />
+          </button>
         </div>
 
         <input

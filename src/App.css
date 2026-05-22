@@ -1,3 +1,4 @@
+
 .appShell {
   height: 100vh;
   width: 100vw;
@@ -77,49 +78,89 @@
 }
 
 .resumeToolbar {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  display: flex;
   gap: 12px;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  overflow-x: hidden;
   min-width: 0;
-  align-content: start;
-  padding: 16px;
+  padding: 16px 16px 0;
   background: color-mix(in srgb, var(--color-bg-elevated) 88%, white);
 }
 
 .toolbarSection {
-  display: grid;
-  gap: 10px;
+  display: flex;
+  flex: 1 1 0;
+  gap: 12px;
+  align-items: stretch;
+  flex-wrap: nowrap;
   min-width: 0;
-  align-content: start;
-  padding: 12px;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  background: var(--color-bg);
+  padding: 0 12px 0 0;
+  border: 1px solid color-mix(in srgb, var(--color-border) 88%, white);
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+  background: color-mix(in srgb, var(--color-bg-elevated) 78%, white);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  overflow: hidden;
 }
 
 .toolbarSectionActive {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent);
+  background: var(--color-bg);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 -1px 0 color-mix(in srgb, var(--color-accent) 22%, transparent);
+  position: relative;
+  z-index: 1;
 }
 
 .toolbarTabButton {
-  justify-self: start;
-  border-radius: 999px;
-  padding-inline: 14px;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  border-right: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: 0 16px;
   font-weight: 600;
 }
 
 .toolbarControls,
 .toolbarModeTabs {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-wrap: nowrap;
+  gap: 0;
   align-items: center;
+  min-width: 0;
 }
 
 .toolbarControls > *,
 .toolbarModeTabs > * {
   flex: 0 1 auto;
+}
+
+.toolbarControls {
+  flex: 1 1 auto;
+  gap: 8px;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding-block: 12px;
+}
+
+.toolbarControlsTemplate {
+  padding-left: 2px;
+}
+
+.toolbarControlsTemplate .toolbarSelect {
+  margin-right: auto;
+}
+
+.toolbarModeTabs {
+  align-self: stretch;
+  flex: 0 0 auto;
+  background: color-mix(in srgb, var(--color-bg-elevated) 82%, white);
+  border-right: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
 .toolbarModeButtonActive {
@@ -128,8 +169,14 @@
   border-color: var(--color-accent);
 }
 
+.toolbarModeTabs .toolbarTabButton:last-child {
+  border-right: 0;
+}
+
 .toolbarSelect {
-  min-width: min(220px, 100%);
+  flex: 0 1 220px;
+  min-width: 0;
+  width: min(220px, 100%);
   max-width: 100%;
   border: 1px solid var(--color-border);
   border-radius: 8px;
@@ -137,6 +184,28 @@
   color: var(--color-text);
   padding: 6px 10px;
   font: inherit;
+}
+
+.toolbarIconButton {
+  flex: 0 0 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.toolbarActionIcon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .editorViewport {
