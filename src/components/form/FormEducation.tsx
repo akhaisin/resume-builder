@@ -1,7 +1,7 @@
 import Accordion from './Accordion'
 import FormEducationEntry from './FormEducationEntry'
 import { EntryActions } from './FormFields'
-import { createEducationEntry, removeListItem, updateListItem } from './formUtils'
+import { createEducationEntry, removeListItem, reorderItemsById, updateListItem } from './formUtils'
 import type { ResumeEducationEntry } from './formTypes'
 
 interface FormEducationProps {
@@ -14,6 +14,7 @@ export default function FormEducation(props: FormEducationProps) {
     <div className="formStack">
       <EntryActions onAdd={() => props.onChange([...props.entries, createEducationEntry()])} />
       <Accordion
+        reorderable
         items={props.entries.map((entry, index) => ({
           id: `education-${index}`,
           title: entry.institution || `Education ${index + 1}`,
@@ -26,6 +27,9 @@ export default function FormEducation(props: FormEducationProps) {
             />
           ),
         }))}
+        onOrderChange={(nextOrder) =>
+          props.onChange(reorderItemsById(props.entries, nextOrder, (_, index) => `education-${index}`))
+        }
       />
     </div>
   )

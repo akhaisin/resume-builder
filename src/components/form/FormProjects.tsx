@@ -1,7 +1,7 @@
 import Accordion from './Accordion'
 import FormProjectsEntry from './FormProjectsEntry'
 import { EntryActions } from './FormFields'
-import { createProjectEntry, removeListItem, updateListItem } from './formUtils'
+import { createProjectEntry, removeListItem, reorderItemsById, updateListItem } from './formUtils'
 import type { ResumeProjectEntry } from './formTypes'
 
 interface FormProjectsProps {
@@ -14,6 +14,7 @@ export default function FormProjects(props: FormProjectsProps) {
     <div className="formStack">
       <EntryActions onAdd={() => props.onChange([...props.entries, createProjectEntry()])} />
       <Accordion
+        reorderable
         items={props.entries.map((entry, index) => ({
           id: `project-${index}`,
           title: entry.name || `Project ${index + 1}`,
@@ -26,6 +27,9 @@ export default function FormProjects(props: FormProjectsProps) {
             />
           ),
         }))}
+        onOrderChange={(nextOrder) =>
+          props.onChange(reorderItemsById(props.entries, nextOrder, (_, index) => `project-${index}`))
+        }
       />
     </div>
   )

@@ -1,7 +1,7 @@
 import Accordion from './Accordion'
 import FormSkillsCategory from './FormSkillsCategory'
 import { EntryActions } from './FormFields'
-import { createSkillsCategory, removeListItem, updateListItem } from './formUtils'
+import { createSkillsCategory, removeListItem, reorderItemsById, updateListItem } from './formUtils'
 import type { ResumeSkillsCategory } from './formTypes'
 
 interface FormSkillsProps {
@@ -14,6 +14,7 @@ export default function FormSkills(props: FormSkillsProps) {
     <div className="formStack">
       <EntryActions onAdd={() => props.onChange([...props.categories, createSkillsCategory()])} />
       <Accordion
+        reorderable
         items={props.categories.map((category, index) => ({
           id: `skill-${index}`,
           title: category.name || `Skill ${index + 1}`,
@@ -26,6 +27,9 @@ export default function FormSkills(props: FormSkillsProps) {
             />
           ),
         }))}
+        onOrderChange={(nextOrder) =>
+          props.onChange(reorderItemsById(props.categories, nextOrder, (_, index) => `skill-${index}`))
+        }
       />
     </div>
   )

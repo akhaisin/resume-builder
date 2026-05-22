@@ -1,6 +1,6 @@
 import Accordion from './Accordion'
 import { EntryActions, TextField } from './FormFields'
-import { createProfile, getProfileSummary, removeListItem, updateListItem } from './formUtils'
+import { createProfile, getProfileSummary, removeListItem, reorderItemsById, updateListItem } from './formUtils'
 import type { ResumeProfile } from './formTypes'
 
 interface FormProfilesProps {
@@ -13,6 +13,7 @@ export default function FormProfiles(props: FormProfilesProps) {
     <div className="formStack">
       <EntryActions onAdd={() => props.onChange([...props.profiles, createProfile()])} />
       <Accordion
+        reorderable
         items={props.profiles.map((profile, index) => ({
           id: `profile-${index}`,
           title: `Profile ${index + 1}`,
@@ -44,6 +45,9 @@ export default function FormProfiles(props: FormProfilesProps) {
             </div>
           ),
         }))}
+        onOrderChange={(nextOrder) =>
+          props.onChange(reorderItemsById(props.profiles, nextOrder, (_, index) => `profile-${index}`))
+        }
       />
     </div>
   )

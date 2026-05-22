@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Accordion from './Accordion'
 import FormCoverLetter from './FormCoverLetter'
 import FormEducation from './FormEducation'
@@ -17,8 +16,6 @@ interface ResumeFormEditorPanelProps {
 }
 
 export default function ResumeFormEditorPanel(props: ResumeFormEditorPanelProps) {
-  const [sectionOrder, setSectionOrder] = useState(DEFAULT_SECTION_ORDER)
-
   let document: ResumeDocument
   try {
     document = parseResumeDocument(props.json)
@@ -113,9 +110,7 @@ export default function ResumeFormEditorPanel(props: ResumeFormEditorPanelProps)
   return (
     <div className="formEditorPanel">
       <Accordion
-        reorderable
-        items={sectionOrder.map((sectionId) => itemsById[sectionId as keyof typeof itemsById])}
-        onOrderChange={setSectionOrder}
+        items={DEFAULT_SECTION_ORDER.map((sectionId) => itemsById[sectionId as keyof typeof itemsById])}
       />
     </div>
   )

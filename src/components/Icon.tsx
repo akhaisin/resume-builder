@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-type IconName = 'download' | 'export' | 'import' | 'revert'
+type IconName = 'download' | 'export' | 'import' | 'revert' | 'drag'
 
 interface IconProps {
   name: IconName
@@ -54,6 +54,16 @@ const iconPaths: Record<IconName, ReactNode> = {
     <>
       <path d="M10 6 4 12l6 6" />
       <path d="M5 12h8a5 5 0 1 1 0 10h-2" />
+    </>
+  ),
+  drag: (
+    <>
+      <circle cx="9" cy="7" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="7" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="9" cy="12" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="12" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="9" cy="17" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="17" r="1.2" fill="currentColor" stroke="none" />
     </>
   ),
 }

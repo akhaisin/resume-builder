@@ -1,7 +1,7 @@
 import Accordion from './Accordion'
 import FormWorkExperienceEntry from './FormWorkExperienceEntry'
 import { EntryActions } from './FormFields'
-import { createWorkEntry, removeListItem, updateListItem } from './formUtils'
+import { createWorkEntry, removeListItem, reorderItemsById, updateListItem } from './formUtils'
 import type { ResumeWorkEntry } from './formTypes'
 
 interface FormWorkExperienceProps {
@@ -14,6 +14,7 @@ export default function FormWorkExperience(props: FormWorkExperienceProps) {
     <div className="formStack">
       <EntryActions onAdd={() => props.onChange([...props.entries, createWorkEntry()])} />
       <Accordion
+        reorderable
         items={props.entries.map((entry, index) => ({
           id: `work-${index}`,
           title: entry.position || `Role ${index + 1}`,
@@ -26,6 +27,9 @@ export default function FormWorkExperience(props: FormWorkExperienceProps) {
             />
           ),
         }))}
+        onOrderChange={(nextOrder) =>
+          props.onChange(reorderItemsById(props.entries, nextOrder, (_, index) => `work-${index}`))
+        }
       />
     </div>
   )
