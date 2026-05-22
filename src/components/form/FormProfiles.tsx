@@ -1,6 +1,13 @@
 import Accordion from './Accordion'
-import { EntryActions, TextField } from './FormFields'
-import { createProfile, getProfileSummary, removeListItem, reorderItemsById, updateListItem } from './formUtils'
+import { AccordionItemActions, EntryActions, TextField } from './FormFields'
+import {
+  createProfile,
+  getProfileSummary,
+  insertListItem,
+  removeListItem,
+  reorderItemsById,
+  updateListItem,
+} from './formUtils'
 import type { ResumeProfile } from './formTypes'
 
 interface FormProfilesProps {
@@ -11,13 +18,18 @@ interface FormProfilesProps {
 export default function FormProfiles(props: FormProfilesProps) {
   return (
     <div className="formStack">
-      <EntryActions onAdd={() => props.onChange([...props.profiles, createProfile()])} />
       <Accordion
         reorderable
         items={props.profiles.map((profile, index) => ({
           id: `profile-${index}`,
           title: `Profile ${index + 1}`,
           summary: getProfileSummary(profile),
+          actions: (
+            <AccordionItemActions
+              onAdd={() => props.onChange(insertListItem(props.profiles, index + 1, createProfile()))}
+              onRemove={() => props.onChange(removeListItem(props.profiles, index))}
+            />
+          ),
           content: (
             <div className="formFieldGrid">
               <TextField
@@ -41,7 +53,6 @@ export default function FormProfiles(props: FormProfilesProps) {
                   props.onChange(updateListItem(props.profiles, index, { ...profile, url: value }))
                 }
               />
-              <EntryActions onRemove={() => props.onChange(removeListItem(props.profiles, index))} />
             </div>
           ),
         }))}
@@ -49,6 +60,9 @@ export default function FormProfiles(props: FormProfilesProps) {
           props.onChange(reorderItemsById(props.profiles, nextOrder, (_, index) => `profile-${index}`))
         }
       />
+      {props.profiles.length === 0 ? (
+        <EntryActions onAdd={() => props.onChange([createProfile()])} />
+      ) : null}
     </div>
   )
 }

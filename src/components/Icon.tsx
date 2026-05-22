@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-type IconName = 'download' | 'export' | 'import' | 'revert' | 'drag'
+type IconName = 'download' | 'export' | 'import' | 'revert' | 'drag' | 'add' | 'delete'
 
 interface IconProps {
   name: IconName
@@ -66,6 +66,18 @@ const iconPaths: Record<IconName, ReactNode> = {
       <circle cx="15" cy="17" r="1.2" fill="currentColor" stroke="none" />
     </>
   ),
+  add: (
+    <>
+      <path d="M12 5v14" />
+      <path d="M5 12h14" />
+    </>
+  ),
+  delete: (
+    <>
+      <path d="M7 7 17 17" />
+      <path d="M17 7 7 17" />
+    </>
+  ),
 }
 
 export default function Icon(props: IconProps) {
@@ -75,6 +87,10 @@ export default function Icon(props: IconProps) {
       className={props.className}
       viewBox="0 0 24 24"
       fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       xmlns="http://www.w3.org/2000/svg"
     >
       {iconPaths[props.name]}

@@ -1,8 +1,9 @@
 import Accordion from './Accordion'
-import { EntryActions, TextField } from './FormFields'
+import { AccordionItemActions, EntryActions, TextField } from './FormFields'
 import {
   createCoverLetterItem,
   ensureStringArray,
+  insertListItem,
   removeListItem,
   reorderItemsById,
   updateListItem,
@@ -47,6 +48,22 @@ export default function FormHighlights(props: FormHighlightsProps) {
           return {
             id: `highlight-${index}`,
             title: item.title?.trim() || firstLine || `Highlight ${index + 1}`,
+            actions: (
+              <AccordionItemActions
+                onAdd={() =>
+                  commit(
+                    insertListItem(
+                      items,
+                      index + 1,
+                      props.mode === 'cover-letter'
+                        ? createCoverLetterItem()
+                        : { title: '', type: 'bullets', items: [''] },
+                    ),
+                  )
+                }
+                onRemove={() => commit(removeListItem(items, index))}
+              />
+            ),
             content: (
               <div className="highlightLayout">
                 <div className="highlightActionsPane">
@@ -66,24 +83,6 @@ export default function FormHighlights(props: FormHighlightsProps) {
                       </select>
                     </label>
                   ) : null}
-                  <div className="highlightActionButtons">
-                    <button type="button" onClick={() => commit(removeListItem(items, index))}>
-                      Delete
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        commit([
-                          ...items,
-                          props.mode === 'cover-letter'
-                            ? createCoverLetterItem()
-                            : { title: '', type: 'bullets', items: [''] },
-                        ])
-                      }
-                    >
-                      Add
-                    </button>
-                  </div>
                 </div>
                 <div className="highlightEditorPane">
                   <TextField

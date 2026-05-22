@@ -1,11 +1,10 @@
 import FormHighlights from './FormHighlights'
-import { EntryActions, TextField } from './FormFields'
+import { TextField } from './FormFields'
 import type { ResumeWorkEntry } from './formTypes'
 
 interface FormWorkExperienceEntryProps {
   entry: ResumeWorkEntry
   onChange: (entry: ResumeWorkEntry) => void
-  onDelete: () => void
 }
 
 export default function FormWorkExperienceEntry(props: FormWorkExperienceEntryProps) {
@@ -20,7 +19,6 @@ export default function FormWorkExperienceEntry(props: FormWorkExperienceEntryPr
       </div>
       <TextField label="Summary" multiline value={props.entry.summary ?? ''} onChange={(value) => props.onChange({ ...props.entry, summary: value })} />
       <FormHighlights mode="work" value={props.entry.highlights ?? []} onChange={(value) => props.onChange({ ...props.entry, highlights: value as string[] })} />
-      <EntryActions onRemove={props.onDelete} />
     </div>
   )
 }

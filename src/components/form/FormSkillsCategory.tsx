@@ -1,10 +1,9 @@
-import { EntryActions, TextField } from './FormFields'
+import { TextField } from './FormFields'
 import type { ResumeSkillsCategory } from './formTypes'
 
 interface FormSkillsCategoryProps {
   category: ResumeSkillsCategory
   onChange: (category: ResumeSkillsCategory) => void
-  onDelete: () => void
 }
 
 export default function FormSkillsCategory(props: FormSkillsCategoryProps) {
@@ -17,7 +16,6 @@ export default function FormSkillsCategory(props: FormSkillsCategoryProps) {
         value={(props.category.keywords ?? []).join('\n')}
         onChange={(value) => props.onChange({ ...props.category, keywords: value.split('\n').filter(Boolean) })}
       />
-      <EntryActions onRemove={props.onDelete} />
     </div>
   )
 }

@@ -1,10 +1,9 @@
-import { EntryActions, TextField } from './FormFields'
+import { TextField } from './FormFields'
 import type { ResumeProjectEntry } from './formTypes'
 
 interface FormProjectsEntryProps {
   entry: ResumeProjectEntry
   onChange: (entry: ResumeProjectEntry) => void
-  onDelete: () => void
 }
 
 export default function FormProjectsEntry(props: FormProjectsEntryProps) {
@@ -19,7 +18,6 @@ export default function FormProjectsEntry(props: FormProjectsEntryProps) {
         />
         <TextField label="URL" value={props.entry.url ?? ''} onChange={(value) => props.onChange({ ...props.entry, url: value })} />
       </div>
-      <EntryActions onRemove={props.onDelete} />
     </div>
   )
 }

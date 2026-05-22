@@ -296,16 +296,30 @@
   transform: translateY(50%);
 }
 
-.accordionHeader {
-  width: 100%;
+.accordionHeaderRow {
   display: flex;
-  justify-content: space-between;
+  align-items: stretch;
+  background: color-mix(in srgb, var(--color-bg-elevated) 85%, white);
+}
+
+.accordionHeader {
+  flex: 1 1 auto;
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
   gap: 12px;
   border: 0;
   border-radius: 0;
-  background: color-mix(in srgb, var(--color-bg-elevated) 85%, white);
+  background: transparent;
   padding: 14px 16px;
+}
+
+.accordionHeaderTrailing {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px 0 0;
 }
 
 .accordionHeaderText {
@@ -333,6 +347,55 @@
 
 .accordionContent {
   padding: 16px;
+}
+
+.accordionSectionBody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: stretch;
+}
+
+.accordionItemActionsCollapsed {
+  display: inline-flex;
+  align-items: center;
+}
+
+.accordionItemActionsExpanded {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px 16px 16px 0;
+}
+
+.accordionItemActionsInner {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.accordionItemActionsExpanded .accordionItemActionsInner {
+  flex-direction: column;
+}
+
+.accordionItemActionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 8px;
+}
+
+.accordionItemActionButtonAdd {
+  color: #1f8f4e;
+}
+
+.accordionItemActionButtonDelete {
+  color: #c43b3b;
+}
+
+.accordionItemActionIcon {
+  width: 15px;
+  height: 15px;
 }
 
 .formStack {

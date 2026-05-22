@@ -70,6 +70,12 @@ export function moveListItem<T>(items: T[], fromIndex: number, toIndex: number) 
   return nextItems
 }
 
+export function insertListItem<T>(items: T[], index: number, nextItem: T) {
+  const nextItems = [...items]
+  nextItems.splice(index, 0, nextItem)
+  return nextItems
+}
+
 export function reorderItemsById<T>(items: T[], nextOrder: string[], getId: (item: T, index: number) => string) {
   const itemsById = new Map(items.map((item, index) => [getId(item, index), item]))
   return nextOrder.flatMap((id) => {

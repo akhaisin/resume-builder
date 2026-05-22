@@ -1,10 +1,9 @@
-import { EntryActions, TextField } from './FormFields'
+import { TextField } from './FormFields'
 import type { ResumeEducationEntry } from './formTypes'
 
 interface FormEducationEntryProps {
   entry: ResumeEducationEntry
   onChange: (entry: ResumeEducationEntry) => void
-  onDelete: () => void
 }
 
 export default function FormEducationEntry(props: FormEducationEntryProps) {
@@ -18,7 +17,6 @@ export default function FormEducationEntry(props: FormEducationEntryProps) {
         <TextField label="End Date" value={props.entry.endDate ?? ''} onChange={(value) => props.onChange({ ...props.entry, endDate: value })} />
         <TextField label="Location" value={props.entry.location ?? ''} onChange={(value) => props.onChange({ ...props.entry, location: value })} />
       </div>
-      <EntryActions onRemove={props.onDelete} />
     </div>
   )
 }

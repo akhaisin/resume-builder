@@ -6,6 +6,7 @@ export interface AccordionItem {
   title: string
   summary?: string
   content: ReactNode
+  actions?: ReactNode
 }
 
 interface AccordionProps {
@@ -95,33 +96,47 @@ export default function Accordion(props: AccordionProps) {
               setDropTarget(null)
             }}
           >
-            <button
-              type="button"
-              className="accordionHeader"
-              draggable={props.reorderable}
-              onDragStart={() => {
-                setDraggedId(item.id)
-                setDropTarget(null)
-              }}
-              onDragEnd={() => {
-                setDraggedId(null)
-                setDropTarget(null)
-              }}
-              onClick={() => toggleItem(item.id)}
-            >
-              <span className="accordionHeaderText">
-                <strong>{item.title}</strong>
-                {!isOpen && item.summary ? (
-                  <span className="accordionSummary">{item.summary}</span>
-                ) : null}
-              </span>
-              {props.reorderable ? (
-                <span className="accordionDragHint" aria-hidden="true">
-                  <Icon name="drag" className="accordionDragIcon" />
+            <div className="accordionHeaderRow">
+              <button
+                type="button"
+                className="accordionHeader"
+                draggable={props.reorderable}
+                onDragStart={() => {
+                  setDraggedId(item.id)
+                  setDropTarget(null)
+                }}
+                onDragEnd={() => {
+                  setDraggedId(null)
+                  setDropTarget(null)
+                }}
+                onClick={() => toggleItem(item.id)}
+              >
+                <span className="accordionHeaderText">
+                  <strong>{item.title}</strong>
+                  {!isOpen && item.summary ? (
+                    <span className="accordionSummary">{item.summary}</span>
+                  ) : null}
                 </span>
-              ) : null}
-            </button>
-            {isOpen ? <div className="accordionContent">{item.content}</div> : null}
+              </button>
+              <div className="accordionHeaderTrailing">
+                {!isOpen && item.actions ? (
+                  <div className="accordionItemActions accordionItemActionsCollapsed">{item.actions}</div>
+                ) : null}
+                {props.reorderable ? (
+                  <span className="accordionDragHint" aria-hidden="true">
+                    <Icon name="drag" className="accordionDragIcon" />
+                  </span>
+                ) : null}
+              </div>
+            </div>
+            {isOpen ? (
+              <div className="accordionSectionBody">
+                <div className="accordionContent">{item.content}</div>
+                {item.actions ? (
+                  <div className="accordionItemActions accordionItemActionsExpanded">{item.actions}</div>
+                ) : null}
+              </div>
+            ) : null}
           </section>
         )
       })}
