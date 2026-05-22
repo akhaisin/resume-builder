@@ -523,6 +523,43 @@ Requirement:
 Notes:
 - This requirement captures the implemented fixed overlay download button behavior for the preview panel.
 
+#### UIX_025 — Global shell overlay controls
+Category: User Interface
+Status: Proposed
+
+Requirement:
+- The application shell must expose a fixed overlay control cluster separate from the editor and preview content areas.
+- The overlay cluster must include a mefly.dev host navigation receiver, a GitHub repository link, and a help-tour button.
+- The overlay controls must remain accessible while either panel scrolls and must not be embedded inside editor cards or preview document content.
+
+Notes:
+- This captures the requested shell-level overlay affordances for host integration and project navigation.
+
+#### UIX_026 — Guided product tour
+Category: User Interface
+Status: Proposed
+
+Requirement:
+- The application must provide an in-app guided tour that can be launched from the fixed help overlay button.
+- The guided tour must explain the overlay controls, toolbar/editor switching, live preview behavior, and PDF download affordance.
+- The help overlay button may visually highlight itself until the user has launched the tour at least once.
+
+Notes:
+- This formalizes the requested help-tour behavior and the one-time help discovery affordance.
+
+#### ARC_002 — mefly.dev host integration
+Category: Architecture
+Status: Proposed
+
+Requirement:
+- The application must integrate with mefly.dev through a browser `postMessage` contract rather than through a routing-dependent framework integration.
+- The embedded app must accept `MEFLY_MENU` messages from trusted host origins and render the received menu as an overlay.
+- When a user selects a received menu item inside an embedded context, the app must emit a `MEFLY_NAV_SELECT` message back to the parent window with the selected item payload.
+- The overlay message integration must trust `https://mefly.dev` and `https://www.mefly.dev` as allowed origins.
+
+Notes:
+- This requirement captures the requested mefly.dev integration while avoiding a React Router dependency in the embedded app.
+
 #### VAL_001 — Local JSON Resume schema enforcement
 Category: Validation
 Status: Proposed
