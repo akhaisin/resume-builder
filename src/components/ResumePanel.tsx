@@ -34,7 +34,7 @@ export default function ResumePanel(props: ResumePanelProps) {
   return (
     <Panel defaultSize={52} minSize={30} className="resumePanel">
       <div className="resumePanelInner">
-        <div className="resumeToolbarShell">
+        <div id="tour-resume-toolbar" className="resumeToolbarShell">
           <ResumeToolbar
             activeTab={activeTab}
             onActiveTabChange={setActiveTab}
@@ -51,7 +51,7 @@ export default function ResumePanel(props: ResumePanelProps) {
             onTemplateImport={props.onTemplateImport}
           />
         </div>
-        <div className="editorViewport">
+        <div id="tour-editor-panel" className="editorViewport">
           {activeTab === 'resume' && resumeMode === 'json' && (
             <ResumeJsonEditorPanel
               value={props.json}

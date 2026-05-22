@@ -157,6 +157,7 @@ export default function TypstPdfPanel(props: TypstPdfPanelProps) {
   return (
     <div className="typstPdfPanelContent">
       <button
+        id="tour-download-pdf"
         type="button"
         className="previewDownloadButton"
         disabled={!props.isResumeJsonValid || isCompiling || !!compileError}
@@ -173,7 +174,7 @@ export default function TypstPdfPanel(props: TypstPdfPanelProps) {
         {compileError ? (
           <div className="panelCard previewError">{compileError}</div>
         ) : null}
-        <div className="previewSurfaceShell">
+        <div id="tour-preview-panel" className="previewSurfaceShell">
           <div ref={previewSurfaceRef} className="panelCard previewSurface">
             {activeBuffer === null ? (
               <p className="panelText">

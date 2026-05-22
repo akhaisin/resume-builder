@@ -2,9 +2,181 @@
 .appShell {
   height: 100vh;
   width: 100vw;
+  position: relative;
   background:
     radial-gradient(circle at top left, rgba(0, 0, 0, 0.04), transparent 28%),
     linear-gradient(180deg, var(--color-bg-subtle), var(--color-bg));
+}
+
+.appOverlayControls {
+  position: fixed;
+  inset: auto auto 1rem 1rem;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.appOverlayAnchor {
+  pointer-events: auto;
+}
+
+.meflyOverlay {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  pointer-events: auto;
+}
+
+.meflyOverlayTrigger {
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 999px;
+  border: 1px solid #d8cfbf;
+  background: rgba(255, 252, 245, 0.92);
+  color: #403929;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(31, 41, 51, 0.12);
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  padding: 0;
+}
+
+.meflyOverlayTrigger:hover {
+  transform: translateY(-1px);
+  border-color: #8a6f3e;
+  background: rgba(240, 236, 226, 0.97);
+}
+
+.meflyOverlayTrigger:focus-visible {
+  outline: 2px solid #8a6f3e;
+  outline-offset: 2px;
+}
+
+.meflyOverlayMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meflyOverlayItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 6px;
+  border-radius: 20px;
+  background: rgba(26, 26, 26, 0.88);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  transition: background-color 0.12s ease;
+}
+
+.meflyOverlayItem:hover {
+  background: rgba(51, 51, 51, 0.95);
+}
+
+.meflyOverlayItemActive {
+  outline: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.meflyOverlayItemDisabled {
+  opacity: 0.48;
+  cursor: default;
+}
+
+.meflyOverlayItemDevOnly::after {
+  content: 'DEV';
+  margin-left: 4px;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  opacity: 0.72;
+}
+
+.meflyOverlayItemIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.meflyOverlayItemLabel {
+  display: inline-flex;
+  align-items: center;
+}
+
+.appOverlayButton {
+  position: fixed;
+  bottom: 1rem;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: #1f2933;
+  background: rgba(255, 252, 245, 0.92);
+  border: 1px solid #d8cfbf;
+  box-shadow: 0 8px 20px rgba(31, 41, 51, 0.12);
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  pointer-events: auto;
+}
+
+.appOverlayButton:hover {
+  transform: translateY(-1px);
+  border-color: #8a6f3e;
+  background: #fffdf8;
+}
+
+.appOverlayButton:focus-visible {
+  outline: 2px solid #8a6f3e;
+  outline-offset: 2px;
+}
+
+.appOverlayRepoLink {
+  left: 1rem;
+}
+
+.appOverlayHelpButton {
+  left: 3.75rem;
+  cursor: pointer;
+}
+
+.appShellEmbedded .appOverlayRepoLink {
+  left: 3.75rem;
+}
+
+.appShellEmbedded .appOverlayHelpButton {
+  left: 6.5rem;
+}
+
+.appOverlayIcon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.appOverlayIconFill {
+  fill: currentColor;
+  stroke: none;
+}
+
+@keyframes overlay-help-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(138, 111, 62, 0); }
+  50% { box-shadow: 0 0 0 2px rgba(138, 111, 62, 0.35); }
+}
+
+.appOverlayHelpButtonGlow {
+  animation: overlay-help-glow 2s ease-in-out infinite;
 }
 
 .resizableGroup {
