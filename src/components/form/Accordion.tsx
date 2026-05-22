@@ -96,19 +96,23 @@ export default function Accordion(props: AccordionProps) {
               setDropTarget(null)
             }}
           >
-            <div className="accordionHeaderRow">
+            <div
+              className={['accordionHeaderRow', props.reorderable ? 'accordionHeaderRowDraggable' : '']
+                .join(' ')
+                .trim()}
+              draggable={props.reorderable}
+              onDragStart={() => {
+                setDraggedId(item.id)
+                setDropTarget(null)
+              }}
+              onDragEnd={() => {
+                setDraggedId(null)
+                setDropTarget(null)
+              }}
+            >
               <button
                 type="button"
                 className="accordionHeader"
-                draggable={props.reorderable}
-                onDragStart={() => {
-                  setDraggedId(item.id)
-                  setDropTarget(null)
-                }}
-                onDragEnd={() => {
-                  setDraggedId(null)
-                  setDropTarget(null)
-                }}
                 onClick={() => toggleItem(item.id)}
               >
                 <span className="accordionHeaderText">

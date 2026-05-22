@@ -472,6 +472,20 @@
   display: flex;
   align-items: stretch;
   background: color-mix(in srgb, var(--color-bg-elevated) 85%, white);
+  transition: background-color 0.15s ease;
+}
+
+.accordionHeaderRow:hover,
+.accordionHeaderRow:focus-within {
+  background: var(--color-bg-active);
+}
+
+.accordionHeaderRowDraggable {
+  cursor: grab;
+}
+
+.accordionHeaderRowDraggable:active {
+  cursor: grabbing;
 }
 
 .accordionHeader {
@@ -485,6 +499,11 @@
   border-radius: 0;
   background: transparent;
   padding: 14px 16px;
+}
+
+.accordionHeader:hover,
+.accordionHeader:focus-visible {
+  background: transparent;
 }
 
 .accordionHeaderTrailing {
