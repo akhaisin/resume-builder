@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Group, Panel, Separator } from 'react-resizable-panels'
+import Icon from './Icon'
 import { useDebounce } from '../hooks/useDebounce'
 import { createTypstCompiler } from '../lib/typstCompiler'
 
@@ -155,75 +155,48 @@ export default function TypstPdfPanel(props: TypstPdfPanelProps) {
   }
 
   return (
-    <Panel defaultSize={48} minSize={30} className="typstPdfPanel">
-      <Group orientation="vertical" className="panelGroup">
-        <Panel defaultSize={100} minSize={40}>
-          <div className="typstPdfPanelInner">
-            <div className="panelCard">
-              <div className="panelEyebrow">Preview</div>
-              <h2 className="panelTitle">TypstPdfPanel</h2>
+    <div className="typstPdfPanelContent">
+      <button
+        type="button"
+        className="previewDownloadButton"
+        disabled={!props.isResumeJsonValid || isCompiling || !!compileError}
+        onClick={handleDownloadPdf}
+        aria-label="Download PDF"
+        title="Download PDF"
+      >
+        <Icon name="download" className="previewDownloadIcon" />
+      </button>
+      <div className="typstPdfPanelInner">
+        {!props.isResumeJsonValid && props.resumeValidationMessage ? (
+          <div className="panelCard previewError">{props.resumeValidationMessage}</div>
+        ) : null}
+        {compileError ? (
+          <div className="panelCard previewError">{compileError}</div>
+        ) : null}
+        <div className="previewSurfaceShell">
+          <div ref={previewSurfaceRef} className="panelCard previewSurface">
+            {activeBuffer === null ? (
               <p className="panelText">
                 {props.isResumeJsonValid
-                  ? 'Preview reflects the current in-memory resume and selected template.'
-                  : 'Preview and PDF download are blocked until the resume JSON is valid.'}
+                  ? isCompiling
+                    ? 'Rendering preview.'
+                    : 'Waiting for Typst output.'
+                  : 'Fix resume JSON validation errors to render the preview.'}
               </p>
-              <div className="panelActions">
-                <button
-                  type="button"
-                  disabled={!props.isResumeJsonValid || isCompiling || !!compileError}
-                  onClick={handleDownloadPdf}
-                >
-                  Download PDF
-                </button>
-                <span className="previewMeta">
-                  {props.isResumeJsonValid
-                    ? isCompiling
-                      ? 'Compiling...'
-                      : compileError
-                        ? 'Compile error'
-                        : activeBuffer !== null
-                          ? 'Ready'
-                          : 'Idle'
-                    : 'Validation blocked'}
-                </span>
-              </div>
-            </div>
-            <div className="panelCard">
-              <div className="previewMeta">Template: {props.templateId}</div>
-              <div className="previewMeta">Template bytes: {props.templateSource.length}</div>
-              <div className="previewMeta">Resume bytes: {props.json.length}</div>
-            </div>
-            {!props.isResumeJsonValid && props.resumeValidationMessage ? (
-              <div className="panelCard previewError">{props.resumeValidationMessage}</div>
             ) : null}
-            {compileError ? (
-              <div className="panelCard previewError">{compileError}</div>
-            ) : null}
-            <div ref={previewSurfaceRef} className="panelCard previewSurface">
-              {activeBuffer === null ? (
-                <p className="panelText">
-                  {props.isResumeJsonValid
-                    ? isCompiling
-                      ? 'Rendering preview.'
-                      : 'Waiting for Typst output.'
-                    : 'Fix resume JSON validation errors to render the preview.'}
-                </p>
-              ) : null}
-              <div className="previewStack">
-                <div
-                  ref={previewBufferARef}
-                  className={`previewMount previewDocument ${activeBuffer === 0 ? 'previewDocumentActive' : ''}`.trim()}
-                />
-                <div
-                  ref={previewBufferBRef}
-                  className={`previewMount previewDocument ${activeBuffer === 1 ? 'previewDocumentActive' : ''}`.trim()}
-                />
-              </div>
+            <div className="previewStack">
+              <div
+                ref={previewBufferARef}
+                className={`previewMount previewDocument ${activeBuffer === 0 ? 'previewDocumentActive' : ''}`.trim()}
+              />
+              <div
+                ref={previewBufferBRef}
+                className={`previewMount previewDocument ${activeBuffer === 1 ? 'previewDocumentActive' : ''}`.trim()}
+              />
             </div>
           </div>
-        </Panel>
-        <Separator className="panelResizeHandle" />
-      </Group>
-    </Panel>
+        </div>
+      </div>
+    </div>
   )
 }

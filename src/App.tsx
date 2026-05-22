@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Group, Separator } from 'react-resizable-panels'
+import { Group, Panel, Separator } from 'react-resizable-panels'
 import './App.css'
 import defaultResume from './data/resume.json'
 import { useDebounce } from './hooks/useDebounce'
@@ -86,13 +86,15 @@ export default function App() {
           onTemplateImport={setTemplateSource}
         />
         <Separator className="panelResizeHandle" />
-        <TypstPdfPanel
-          json={resumeDraft}
-          isResumeJsonValid={isResumeJsonValid}
-          resumeValidationMessage={resumeValidationMessage}
-          templateId={selectedTemplateId}
-          templateSource={templateSource}
-        />
+        <Panel defaultSize={48} minSize={30} className="typstPdfPanel">
+          <TypstPdfPanel
+            json={resumeDraft}
+            isResumeJsonValid={isResumeJsonValid}
+            resumeValidationMessage={resumeValidationMessage}
+            templateId={selectedTemplateId}
+            templateSource={templateSource}
+          />
+        </Panel>
       </Group>
     </div>
   )

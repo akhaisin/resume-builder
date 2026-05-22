@@ -169,6 +169,18 @@ Requirement:
 Notes:
 - This requirement fixes the runtime model and the compile-time input source for document generation.
 
+#### CMP_003 — Renderer-backed buffered preview updates
+Category: Compilation
+Status: Proposed
+
+Requirement:
+- On-screen Typst preview rendering must be driven through the Typst renderer rather than through a static pre-rendered bundled artifact.
+- Preview updates must preserve the currently visible document until the next render is ready, so rerenders do not flash blank content or partially updated first-page-only output.
+- The preview implementation must support multi-page output and swap the newly rendered document into view only after the replacement render has completed.
+
+Notes:
+- This captures the renderer-backed double-buffered preview behavior implemented for stable live updates.
+
 #### TPL_001 — Static built-in template catalog
 Category: Templates
 Status: Proposed
@@ -498,6 +510,18 @@ Requirement:
 
 Notes:
 - This requirement applies to the shared accordion component rather than a single form section.
+
+#### UIX_024 — Floating preview download control
+Category: User Interface
+Status: Proposed
+
+Requirement:
+- `TypstPdfPanel` must expose PDF download through a floating overlay button anchored to the top-right corner of the right panel rather than through a header card or scrolling document content.
+- The floating download control must remain fixed in place while the preview document scrolls beneath it.
+- The control must use a compact icon-only presentation and support a semi-transparent idle state with a more prominent hover state.
+
+Notes:
+- This requirement captures the implemented fixed overlay download button behavior for the preview panel.
 
 #### VAL_001 — Local JSON Resume schema enforcement
 Category: Validation
