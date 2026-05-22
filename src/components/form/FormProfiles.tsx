@@ -1,4 +1,4 @@
-import Accordion from '../Accordion'
+import Accordion from './Accordion'
 import { EntryActions, TextField } from './FormFields'
 import { createProfile, getProfileSummary, removeListItem, updateListItem } from './formUtils'
 import type { ResumeProfile } from './formTypes'

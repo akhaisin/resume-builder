@@ -341,7 +341,7 @@ Status: Proposed
 Requirement:
 - `ResumeFormEditorPanel.tsx` must be located in `src/components/form`.
 - `ResumeFormEditorPanel` must be composed from multiple supporting components, with each supporting form component stored as an individual `.tsx` file in `src/components/form`.
-- `ResumeFormEditorPanel` must present its content through a generic accordion component stored at `src/components/Accordion.tsx`, with sections corresponding to top-level JSON Resume schema elements.
+- `ResumeFormEditorPanel` must present its content through a generic accordion component stored at `src/components/form/Accordion.tsx`, with sections corresponding to top-level JSON Resume schema elements.
 
 Notes:
 - This requirement fixes both the module location and the high-level structural decomposition of the form editor.
@@ -485,7 +485,7 @@ Category: User Interface
 Status: Proposed
 
 Requirement:
-- The generic accordion implementation for the form experience must be stored in `src/components/Accordion.tsx`.
+- The generic accordion implementation for the form experience must be stored in `src/components/form/Accordion.tsx`.
 - `ResumeFormEditorPanel` must compose its top-level sections by rendering section components inside `Accordion`, including `FormSummary`, `FormSkills`, `FormWorkExperience`, `FormEducation`, and `FormCoverLetter`.
 
 Notes:
@@ -506,7 +506,7 @@ Category: User Interface
 Status: Proposed
 
 Requirement:
-- The generic accordion implementation in `src/components/Accordion.tsx` must support drag-and-drop reordering of sections.
+- The generic accordion implementation in `src/components/form/Accordion.tsx` must support drag-and-drop reordering of sections.
 
 Notes:
 - This requirement applies to the shared accordion component rather than a single form section.

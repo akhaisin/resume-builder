@@ -1,4 +1,4 @@
-import Accordion from '../Accordion'
+import Accordion from './Accordion'
 import FormEducationEntry from './FormEducationEntry'
 import { EntryActions } from './FormFields'
 import { createEducationEntry, removeListItem, updateListItem } from './formUtils'

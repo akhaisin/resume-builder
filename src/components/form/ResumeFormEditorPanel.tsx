@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Accordion from '../Accordion'
+import Accordion from './Accordion'
 import FormCoverLetter from './FormCoverLetter'
 import FormEducation from './FormEducation'
 import FormProjects from './FormProjects'

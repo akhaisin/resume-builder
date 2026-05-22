@@ -1,4 +1,4 @@
-import Accordion from '../Accordion'
+import Accordion from './Accordion'
 import FormSkillsCategory from './FormSkillsCategory'
 import { EntryActions } from './FormFields'
 import { createSkillsCategory, removeListItem, updateListItem } from './formUtils'
