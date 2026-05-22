@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 import wasm from 'vite-plugin-wasm'
 import path from 'path'
 
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/resume-builder/' : '/',
+export default defineConfig(() => ({
+  base: '/resume-builder/' ,
   plugins: [react(), wasm()],
   resolve: {
     alias: {

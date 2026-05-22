@@ -1,7 +1,11 @@
 import { TypstSnippet } from '@myriaddreamin/typst.ts/dist/esm/contrib/snippet.mjs'
 
-const DEFAULT_COMPILER_WASM_PATH = '/typst_ts_web_compiler_bg.wasm'
-const DEFAULT_RENDERER_WASM_PATH = '/typst_ts_renderer_bg.wasm'
+function resolvePublicAssetPath(filename: string) {
+  return `${import.meta.env.BASE_URL}${filename}`
+}
+
+const DEFAULT_COMPILER_WASM_PATH = resolvePublicAssetPath('typst_ts_web_compiler_bg.wasm')
+const DEFAULT_RENDERER_WASM_PATH = resolvePublicAssetPath('typst_ts_renderer_bg.wasm')
 const DEFAULT_DATA_FILE_PATH = '/data.json'
 const DEFAULT_MAIN_FILE_PATH = '/main.typ'
 const DEFAULT_INPUT_NAME = 'data'
