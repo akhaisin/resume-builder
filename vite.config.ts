@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react'
 import wasm from 'vite-plugin-wasm'
 import path from 'path'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/resume-builder/' : '/',
   plugins: [react(), wasm()],
   resolve: {
     alias: {
@@ -21,4 +22,4 @@ export default defineConfig({
       '@myriaddreamin/typst.react',
     ],
   },
-})
+}))
