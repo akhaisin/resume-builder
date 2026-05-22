@@ -1,0 +1,448 @@
+.appShell {
+  height: 100vh;
+  width: 100vw;
+  background:
+    radial-gradient(circle at top left, rgba(0, 0, 0, 0.04), transparent 28%),
+    linear-gradient(180deg, var(--color-bg-subtle), var(--color-bg));
+}
+
+.resizableGroup {
+  height: 100%;
+  width: 100%;
+}
+
+.panelResizeHandle {
+  width: 10px;
+  position: relative;
+  background: transparent;
+}
+
+.panelResizeHandle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.resumePanel,
+.typstPdfPanel {
+  height: 100%;
+  min-width: 0;
+}
+
+.panelGroup {
+  height: 100%;
+  min-height: 0;
+}
+
+.resumePanel {
+  display: flex;
+  border-right: 1px solid var(--color-border-soft);
+  background: color-mix(in srgb, var(--color-bg) 94%, var(--color-bg-subtle));
+}
+
+.resumePanelInner {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.resumeToolbarShell {
+  flex: 0 0 auto;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.resumeToolbar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+  align-content: start;
+  padding: 16px;
+  background: color-mix(in srgb, var(--color-bg-elevated) 88%, white);
+}
+
+.toolbarSection {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  align-content: start;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-bg);
+}
+
+.toolbarSectionActive {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+.toolbarTabButton {
+  justify-self: start;
+  border-radius: 999px;
+  padding-inline: 14px;
+  font-weight: 600;
+}
+
+.toolbarControls,
+.toolbarModeTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.toolbarControls > *,
+.toolbarModeTabs > * {
+  flex: 0 1 auto;
+}
+
+.toolbarModeButtonActive {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
+.toolbarSelect {
+  min-width: min(220px, 100%);
+  max-width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 6px 10px;
+  font: inherit;
+}
+
+.editorViewport {
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
+  overflow: auto;
+}
+
+.editorPanel,
+.formEditorPanel,
+.typstPdfPanelInner {
+  height: 100%;
+}
+
+.editorPanel,
+.formEditorPanel,
+.typstPdfPanelInner {
+  padding: 16px;
+}
+
+.editorPanel {
+  display: flex;
+  min-height: 0;
+}
+
+.editorPanel > div {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.formEditorPanel,
+.typstPdfPanelInner {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.accordion {
+  display: grid;
+  gap: 12px;
+}
+
+.accordionItem {
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.accordionItemDragging {
+  opacity: 0.65;
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 0;
+  background: color-mix(in srgb, var(--color-bg-elevated) 85%, white);
+  padding: 14px 16px;
+}
+
+.accordionHeaderText {
+  display: grid;
+  gap: 4px;
+  text-align: left;
+}
+
+.accordionSummary,
+.accordionDragHint {
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.accordionContent {
+  padding: 16px;
+}
+
+.formStack {
+  display: grid;
+  gap: 16px;
+}
+
+.formFieldGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.formField {
+  display: grid;
+  gap: 6px;
+}
+
+.formLabel {
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.formInput,
+.formTextarea,
+.formSelect {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  padding: 8px 10px;
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 108px;
+}
+
+.entryActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.highlightCard {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.highlightLayout {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  min-height: 0;
+}
+
+.highlightActionsPane,
+.highlightEditorPane {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+}
+
+.highlightActionsPane {
+  align-content: start;
+  border-right: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg-elevated) 78%, white);
+}
+
+.highlightActionButtons {
+  display: grid;
+  gap: 8px;
+}
+
+.panelCard {
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--color-bg) 92%, var(--color-bg-elevated));
+}
+
+.panelEyebrow {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.panelTitle {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.panelText,
+.previewMeta {
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.panelActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.previewMeta {
+  font-family: var(--font-mono);
+  white-space: pre-wrap;
+}
+
+.previewSurface {
+  min-height: 280px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.previewStack {
+  display: grid;
+  grid-template-areas: 'preview';
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.previewMount {
+  display: grid;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  justify-items: center;
+  align-content: start;
+  gap: 16px;
+  min-height: 0;
+}
+
+.previewDocument {
+  grid-area: preview;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.previewDocumentActive {
+  position: relative;
+  inset: auto;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.previewMount .typst-page {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.previewMount svg {
+  box-sizing: border-box;
+  max-width: 100%;
+  height: auto;
+  background: white;
+  display: block;
+}
+
+.previewMount .typst-html-semantics {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  color: transparent;
+  font-family: monospace;
+  white-space: pre;
+}
+
+.previewMount .typst-html-semantics span {
+  color: transparent;
+  font-family: monospace;
+  transform-origin: left top;
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 0;
+}
+
+.previewMount .typst-html-semantics a {
+  position: absolute;
+  display: inline-block;
+}
+
+.previewMount .typst-content-hint {
+  position: absolute;
+  display: inline-block;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.previewMount .typst-content-group {
+  pointer-events: visible;
+}
+
+.previewMount .typst-html-semantics span::selection {
+  color: transparent;
+  background: #7db9dea0;
+}
+
+.previewMount .typst-html-semantics *::selection {
+  color: transparent;
+  background: transparent;
+}
+
+.previewMount .typst-content-fallback {
+  color: transparent;
+  background: transparent;
+}
+
+.previewMount .pseudo-link,
+.previewMount .typst-text {
+  pointer-events: none;
+}
+
+.previewError {
+  color: var(--color-danger);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 960px) {
+  .resumeToolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .highlightLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .highlightActionsPane {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+}

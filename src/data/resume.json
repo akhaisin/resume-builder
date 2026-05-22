@@ -1,0 +1,184 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Bender Bending Rodriguez",
+    "label": "Bending Unit, Ship Cook, and Occasional Folk Hero",
+    "email": "bender@planetexpress.express",
+    "phone": "+1 (300) 555-0101",
+    "url": "https://planetexpress.express/crew/bender",
+    "summary": "Charismatic bending unit with extensive experience in industrial fabrication, galactic delivery support, culinary operations, stage performance, and creative problem solving. Known for working under pressure, operating with minimal supervision, and delivering results in environments where the rules are more of a suggestion.",
+    "profiles": [
+      {
+        "network": "Spacebook",
+        "username": "@bender",
+        "url": "https://spacebook.example/@bender"
+      },
+      {
+        "network": "Killbots Weekly",
+        "username": "BendingUnit22",
+        "url": "https://killbotsweekly.example/u/bendingunit22"
+      }
+    ],
+    "cover_letter": [
+      {
+        "type": "header",
+        "items": [
+          "Bender Bending Rodriguez"
+        ]
+      },
+      {
+        "type": "paragraphs",
+        "items": [
+          "To whom it may concern,"
+        ]
+      },
+      {
+        "title": "Why hire me",
+        "type": "paragraphs",
+        "items": [
+          "I'm a versatile bending unit with hands-on experience in manufacturing, cargo handling, food service, entertainment, and high-risk delivery missions. I thrive in chaotic environments, keep morale high, and can bend nearly any material to specification.",
+          "My background includes factory-floor bending, interplanetary logistics with Planet Express, and leadership in several unsanctioned side ventures. I bring speed, durability, improvisation, and a healthy disregard for impossible deadlines."
+        ]
+      },
+      {
+        "title": "Core strengths",
+        "type": "bullets",
+        "items": [
+          "Precision bending for steel, titanium, and novelty materials",
+          "Cargo support and field operations on hazardous delivery routes",
+          "Large-scale cooking for crews with low standards and fast turnaround needs",
+          "Public performance, persuasion, and brand-building through music and spectacle"
+        ]
+      },
+      {
+        "type": "paragraphs",
+        "items": [
+          "Thank you for your consideration. Offer me the job, meatbag."
+        ]
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Planet Express",
+      "position": "Ship's Bending Unit and Senior Delivery Crew Member",
+      "startDate": "2999-12",
+      "location": "New New York",
+      "summary": "Core crew member supporting interplanetary delivery, field operations, onboard cooking, and ad hoc tactical solutions.",
+      "highlights": [
+        "Supported hundreds of off-world delivery missions across hostile, unstable, and bureaucratically impossible environments.",
+        "Provided rapid mechanical solutions in the field, including forced entry, structural reshaping, and improvised fabrication.",
+        "Maintained crew morale through entertainment, sarcasm, and selective heroism.",
+        "Served as primary cook for shipboard meals and emergency buffet situations.",
+        "Launched a concurrent folk music career (~3001) after a temporary inability to bend; performed washboard-driven autobiographical sets at bars, robot clubs, and street venues before returning to full bending duties."
+      ]
+    },
+    {
+      "name": "Mom's Friendly Robot Company",
+      "position": "Industrial Bending Unit",
+      "startDate": "2996-04",
+      "endDate": "2997-11",
+      "location": "Tijuana Assembly Division",
+      "summary": "Manufactured as a high-capacity bending robot for industrial and infrastructure applications.",
+      "highlights": [
+        "Performed repetitive and custom bending operations for girders, pipes, and structural components.",
+        "Exceeded factory throughput targets before leaving to pursue a less supervised career path.",
+        "Demonstrated exceptional flexibility, torque control, and self-directed initiative from first activation."
+      ]
+    },
+    {
+      "name": "Various Independent Ventures",
+      "position": "Founder, Operator, and Opportunist",
+      "startDate": "2998-01",
+      "location": "Mostly New New York",
+      "summary": "Launched and operated multiple short-lived but energetic ventures spanning salvage, security, entertainment, and premium vice products.",
+      "short_exp": true,
+      "highlights": [
+        "Created revenue streams in fast-moving markets with minimal startup overhead and maximum improvisation.",
+        "Handled negotiations, promotion, inventory movement, and conflict resolution personally.",
+        "Learned valuable lessons about regulation, trust, and the importance of plausible deniability."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Mom's Friendly Robot Company",
+      "area": "Industrial Bending and Applied Mischief",
+      "studyType": "Factory Training",
+      "startDate": "2996",
+      "endDate": "2996",
+      "location": "Tijuana"
+    },
+    {
+      "institution": "School of Hard Knocks",
+      "area": "Interplanetary Survival",
+      "studyType": "Continuing Education",
+      "startDate": "2997",
+      "location": "The Known Universe"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Mechanical Capabilities",
+      "keywords": [
+        "Metal Bending",
+        "Pipe Forming",
+        "Forced Entry",
+        "Improvised Fabrication",
+        "Heavy Lifting",
+        "Self-Repair"
+      ]
+    },
+    {
+      "name": "Operations",
+      "keywords": [
+        "Interplanetary Delivery",
+        "Cargo Handling",
+        "Mission Support",
+        "Crisis Response",
+        "Field Logistics"
+      ]
+    },
+    {
+      "name": "Food and Hospitality",
+      "keywords": [
+        "Shipboard Cooking",
+        "Large Batch Meals",
+        "Beverage Service",
+        "Questionable Ingredient Sourcing"
+      ]
+    },
+    {
+      "name": "Performance and Influence",
+      "keywords": [
+        "Stage Performance",
+        "Singing",
+        "Persuasion",
+        "Salesmanship",
+        "Comedic Timing"
+      ]
+    },
+    {
+      "name": "Personal Traits",
+      "keywords": [
+        "Fearless",
+        "Adaptable",
+        "High Energy",
+        "Unusually Durable",
+        "Works Well Under Pressure"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Planet Express Delivery Excellence",
+      "description": "Ongoing participation in high-risk, high-importance deliveries across space and time.",
+      "url": "https://planetexpress.express"
+    },
+    {
+      "name": "Bending Stage Act",
+      "description": "Live performance act combining music, bending demonstrations, and crowd work.",
+      "url": "https://bending.show.example"
+    }
+  ]
+}
